@@ -1,12 +1,11 @@
 <style lang="less" scoped src='./index.less'>
 </style>
 <style lang="less">
-.company{
-  .el-dialog{
+.company {
+  .el-dialog {
     width: 35%;
   }
 }
-
 </style>
 
 <template>
@@ -29,92 +28,7 @@
       </div>
     </div>
     <div>
-      <!-- 待审核-->
-      <el-table :data="tableData" border style="width: 100%">
-        <el-table-column prop="" label="序号" align='center' width="70px">
-          <template slot-scope="scope">{{getIndex(scope)}}</template>
-        </el-table-column>
-        <el-table-column prop="name" label="公司名称" align='center' width="90px"></el-table-column>
-        <el-table-column prop="type" label="公司类型" align='center' width="140px"></el-table-column>
-        <el-table-column prop="city" label="城市" align='center'></el-table-column>
-        <el-table-column prop="quyu" label="区域" align='center'></el-table-column>
-        <el-table-column prop="peo_name" label="项目负责人" align='center' width="150px"></el-table-column>
-        <el-table-column prop="tel" label="联系方式" align='center' width="150px"></el-table-column>
-        <el-table-column prop="xx" label="统一社会信用代码" align='center' width="200px"></el-table-column>
-        <el-table-column prop="source" label="来源" align='center' width="80px">
-          <template slot-scope="scope">{{scopeState (scope.row.source)}}</template>
-        </el-table-column>
-        <el-table-column prop="time" label="申请时间" align='center' width="140px"></el-table-column>
-        <el-table-column label="操作" align='center' width="130px">
-          <template slot-scope="scope">
-            <el-button type="text" @click='examine(scope.row)'>审核</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-      <el-pagination background class='page' layout="prev, pager, next" :page-size="pageSize" :current-page="searchObj.page" :total="total" @current-change="pageChange">
-      </el-pagination>
-    </div>
-    <div>
-      <!-- 审核通过-->
-      <el-table :data="adopt" border style="width: 100%">
-        <el-table-column prop="" label="序号" align='center' width="70px">
-          <template slot-scope="scope">{{getIndex(scope)}}</template>
-        </el-table-column>
-        <el-table-column prop="name" label="公司名称" align='center'></el-table-column>
-        <el-table-column prop="num" label="公司编号" align='center'></el-table-column>
-        <el-table-column prop="type" label="公司类型" align='center'></el-table-column>
-        <el-table-column prop="city" label="城市" align='center'></el-table-column>
-        <el-table-column prop="quyu" label="区域" align='center'></el-table-column>
-        <el-table-column prop="peo_name" label="项目负责人" align='center'></el-table-column>
-        <el-table-column prop="tel" label="联系方式" align='center'></el-table-column>
-        <el-table-column prop="xx" label="统一社会信用代码" align='center' width="140px"></el-table-column>
-        <el-table-column prop="source" label="来源" align='center'>
-          <template slot-scope="scope">{{scopeState (scope.row.source)}}</template>
-        </el-table-column>
-        <el-table-column prop="time" label="申请时间" align='center'></el-table-column>
-        <el-table-column prop="time" label="审核时间" align='center'></el-table-column>
-        <el-table-column prop="xxname" label="审核人员" align='center'></el-table-column>
-        <el-table-column label="状态" align='center'>
-          <template slot-scope="scope">
-            {{state(scope.row.state)}}
-          </template>
-        </el-table-column>
-        <el-table-column label="操作" align='center' width="100px">
-          <template slot-scope="scope">
-            <el-button type="text">查看</el-button>
-            <el-button type="text" @click='stop(scope.row)'>停用</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-      <el-pagination background class='page' layout="prev, pager, next" :page-size="pageSize" :current-page="searchObj.page" :total="total" @current-change="pageChange">
-      </el-pagination>
-    </div>
-    <div>
-      <!-- 审核不通过-->
-      <el-table :data="NoPass" border style="width: 100%">
-        <el-table-column prop="" label="序号" align='center' width="70px">
-          <template slot-scope="scope">{{getIndex(scope)}}</template>
-        </el-table-column>
-        <el-table-column prop="name" label="公司名称" align='center'></el-table-column>
-        <el-table-column prop="type" label="公司类型" align='center'></el-table-column>
-        <el-table-column prop="city" label="城市" align='center'></el-table-column>
-        <el-table-column prop="quyu" label="区域" align='center'></el-table-column>
-        <el-table-column prop="peo_name" label="项目负责人" align='center'></el-table-column>
-        <el-table-column prop="tel" label="联系方式" align='center'></el-table-column>
-        <el-table-column prop="xx" label="统一社会信用代码" align='center' width="140px"></el-table-column>
-        <el-table-column prop="source" label="来源" align='center'>
-          <template slot-scope="scope">{{scopeState (scope.row.source)}}</template>
-        </el-table-column>
-        <el-table-column prop="time" label="申请时间" align='center'></el-table-column>
-        <el-table-column prop="time" label="审核时间" align='center'></el-table-column>
-        <el-table-column prop="xxname" label="审核人员" align='center'></el-table-column>
-        <el-table-column label="操作" align='center' width="100px">
-          <template slot-scope="scope">
-            <el-button type="text" @click='examine(scope.row)'>查看</el-button>
-            <el-button type="text">重新申请</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
+      <ready-table :tableData="tableData" @examine="examine" />
       <el-pagination background class='page' layout="prev, pager, next" :page-size="pageSize" :current-page="searchObj.page" :total="total" @current-change="pageChange">
       </el-pagination>
     </div>
@@ -139,11 +53,14 @@
   </div>
 </template>
 <script>
+import ReadyTable from "@/modules/Company/ReadyTable";
+import PassTable from "@/modules/Company/PassTable";
+import NoPassTable from "@/modules/Company/NoPassTable";
 export default {
   data() {
     return {
       stopShow: false,
-      value:'',
+      value: "",
       remark: "",
       searchObj: {
         search: "",
@@ -190,6 +107,7 @@ export default {
       ],
       tableData: [
         {
+          id: 1,
           state_examine: 2,
           name: "云算科技",
           type: "房产商",
@@ -202,6 +120,7 @@ export default {
           source: 1
         },
         {
+          id: 2,
           name: "佳林公司",
           type: "代理公司",
           city: "眉山市",
@@ -228,7 +147,7 @@ export default {
       this.$router.push({ name: "showExamine" });
     },
     examine(row) {
-      this.$router.push({ name: "examine" });
+      this.$router.push({ name: "examine" , query : {id : row.id} });
     },
     addCompany() {
       this.$router.push({ name: "addCompany" });
@@ -236,18 +155,7 @@ export default {
     pageChange(page) {
       this.searchObj.page = page;
     },
-    getIndex(row) {
-      let index = row.$index + 1;
-      return index;
-    },
     clickTip(index) {},
-    scopeState(row) {
-      if (row == 1) {
-        return "内部申请";
-      } else if (row == 2) {
-        return "外部申请";
-      }
-    },
     state(row) {
       if (row == 1) {
         return "已停用";
@@ -255,6 +163,11 @@ export default {
         return "使用中";
       }
     }
+  },
+  components: {
+    NoPassTable,
+    PassTable,
+    ReadyTable
   }
 };
 </script>
