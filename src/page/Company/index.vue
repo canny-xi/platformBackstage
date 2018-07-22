@@ -28,8 +28,8 @@
       </div>
     </div>
     <div>
-      <ready-table :tableData="tableData" @examine="examine" />
-      <el-pagination background class='page' layout="prev, pager, next" :page-size="pageSize" :current-page="searchObj.page" :total="total" @current-change="pageChange">
+      <ready-table v-if="searchObj.tag_search == 0" :tableData="tableData" @examine="examine" />
+      <el-pagination v-if="tableData.length > 0" background class='page' layout="prev, pager, next" :page-size="pageSize" :current-page="searchObj.page" :total="total" @current-change="pageChange">
       </el-pagination>
     </div>
     <el-dialog title="停用" :visible.sync="stopShow" class='dialog' @close="cancelStop">
@@ -64,7 +64,7 @@ export default {
       remark: "",
       searchObj: {
         search: "",
-        tag_search: "",
+        tag_search: 0,
         page: 1
       },
       tipActiveIndex: 0,
@@ -155,7 +155,10 @@ export default {
     pageChange(page) {
       this.searchObj.page = page;
     },
-    clickTip(index) {},
+    clickTip(index) {
+      this.searchObj.tag_search = index;
+      // this.search();
+    },
     state(row) {
       if (row == 1) {
         return "已停用";
