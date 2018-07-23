@@ -38,7 +38,7 @@ export default {
       }
     },
     examine(row) {
-        this.$emit("examine" , row);
+      this.$emit("examine", row);
     }
   }
 };

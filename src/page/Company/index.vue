@@ -29,6 +29,8 @@
     </div>
     <div>
       <ready-table v-if="searchObj.tag_search == 0" :tableData="tableData" @examine="examine" />
+      <pass-table v-if="searchObj.tag_search == 1" :tableData="tableData" />
+      <no-pass-table v-if="searchObj.tag_search == 2" :tableData="tableData" />
       <el-pagination v-if="tableData.length > 0" background class='page' layout="prev, pager, next" :page-size="pageSize" :current-page="searchObj.page" :total="total" @current-change="pageChange">
       </el-pagination>
     </div>
@@ -72,7 +74,7 @@ export default {
       name: "",
       company_name: "",
       total: 1,
-      adopt: [
+      tableData: [
         {
           state_examine: 1,
           name: "奇葩公司",
@@ -89,7 +91,7 @@ export default {
           num: "888888"
         }
       ],
-      NoPass: [
+      tableData: [
         {
           state_examine: 0,
           name: "上滩一号",
@@ -147,7 +149,7 @@ export default {
       this.$router.push({ name: "showExamine" });
     },
     examine(row) {
-      this.$router.push({ name: "examine" , query : {id : row.id} });
+      this.$router.push({ name: "examine", query: { id: row.id } });
     },
     addCompany() {
       this.$router.push({ name: "addCompany" });
@@ -158,13 +160,6 @@ export default {
     clickTip(index) {
       this.searchObj.tag_search = index;
       // this.search();
-    },
-    state(row) {
-      if (row == 1) {
-        return "已停用";
-      } else if (row == 2) {
-        return "使用中";
-      }
     }
   },
   components: {
