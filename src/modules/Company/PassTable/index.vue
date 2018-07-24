@@ -1,6 +1,6 @@
 <template>
   <!-- 审核通过-->
-  <el-table :data="tableData" border style="width: 100%">
+  <el-table :data="tableData"  style="width: 100%">
     <el-table-column prop="" label="序号" align='center' width="70px">
       <template slot-scope="scope">{{getIndex(scope)}}</template>
     </el-table-column>
@@ -10,7 +10,7 @@
     <el-table-column prop="city" label="城市" align='center'></el-table-column>
     <el-table-column prop="quyu" label="区域" align='center'></el-table-column>
     <el-table-column prop="peo_name" label="项目负责人" align='center'></el-table-column>
-    <el-table-column prop="tel" label="联系方式" align='center'></el-table-column>
+    <el-table-column prop="tel" label="联系方式" align='center' width="110px"></el-table-column>
     <el-table-column prop="xx" label="统一社会信用代码" align='center' width="140px"></el-table-column>
     <el-table-column prop="source" label="来源" align='center'>
       <template slot-scope="scope">{{scopeState (scope.row.source)}}</template>

@@ -5,6 +5,7 @@
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
+  background-color: #edf2f5;
   .wrapper-inner {
     width: 100%;
     height: 100%;

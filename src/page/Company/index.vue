@@ -5,6 +5,19 @@
   .el-dialog {
     width: 35%;
   }
+  .el-input__inner{
+    height: 41px;
+    line-height:41px;
+  }
+  .el-table th{
+        background-color: #cad2dd;
+        padding: 4px 0;
+        color:#000;
+       font-weight: 500;
+  }
+  .el-table td{
+        padding:0;
+  }
 }
 </style>
 
@@ -12,15 +25,15 @@
   <div class='company'>
     <div class='title'>
       <div class='block-title'>
-        <div>
+        <div class='block-textAdd-query'>
           <div class='title-text'>当前位置：项目管理</div>
-          <div>
+          <div class='query-all'>
             <el-input v-model="searchObj.search" class='query' placeholder="可按公司名称/公司编号"></el-input>
-            <el-button icon="el-icon-search" circle></el-button>
+            <el-button type="primary">查询</el-button>
             <el-button type="primary" @click='addCompany'>新增</el-button>
           </div>
         </div>
-        <div>
+        <div class='opertion'>
           <el-button class='tip' :class="tipActiveIndex==0?'active':''" type="text" @click="clickTip(0)">待审核</el-button>
           <el-button class='tip' :class="tipActiveIndex==1?'active':''" type="text" @click="clickTip(1)">审核通过</el-button>
           <el-button class='tip' :class="tipActiveIndex==2?'active':''" type="text" @click="clickTip(2)">审核不通过</el-button>
@@ -119,7 +132,10 @@ export default {
           tel: "13921332133",
           xx: "ZZJGDMNO1",
           time: "2017/12/12",
-          source: 1
+          source: 1,
+          num: 888888,
+          xxname: "猪头",
+          state:1
         },
         {
           id: 2,
@@ -131,7 +147,10 @@ export default {
           tel: "13888888888",
           xx: "XXJGDMNO2",
           time: "2017/1/23",
-          source: 2
+          source: 2,
+          num: 222222,
+          xxname: "猪头",
+          state:2
         }
       ]
     };

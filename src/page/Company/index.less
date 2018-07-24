@@ -12,17 +12,39 @@
 
         .block-title{
             text-align: left;
-
-            .title-text{
-                font-size: 17px;
+            .block-textAdd-query{
+                position: relative;
+                .query-all{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+                .query{
+                    width: 220px;
+                   
+                }
             }
+            .title-text{
+                font-size: 16px;
+                letter-spacing:1px;
+            }
+        }
+    }
+    .opertion{
+        .tip{
+            cursor: pointer;
+            color: #666;
+        }
+        .tip.active {
+            color: #409eff;
+        }
+        .tip:hover {
+            color: #409eff;
         }
     }
     .page{
         text-align: right;
         padding-top: 20px;
     }
-    .query{
-        width: 220px;
-    }
+  
 }

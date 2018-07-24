@@ -7,24 +7,26 @@
   top: 0;
   height: 100%;
   z-index: 100;
-  width: 180px;
+  width: 197px;
   margin-top: 70px;
   text-align: left;
-  margin-left: 15px;
+  background-color: #343f51;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 .text {
   font-size: 16px;
   color: #999;
-  width: 180px;
+  width: 197px;
   &.is-active {
-    color: #409eff;
-    background-color: rgb(236, 245, 255);
+    color: #fff;
+    background-color: #6f7e95;
   }
 }
 .delent {
   font-size: 16px;
   color: #999;
-  width: 180px;
+  width: 197px;
   text-align: center;
 }
 .box {
@@ -36,7 +38,7 @@
   left: 0;
   width: 100%;
   height: 70px;
-  background: #fff;
+  background: #fefefe;
   z-index: 110;
   text-align: left;
   border-bottom: 1px solid #eee;
@@ -71,10 +73,16 @@
   padding-left: 11px;
   display: inline-block;
   vertical-align: middle;
+  background-color: #343f51;
+  height: 59px;
+  padding-right: 10px;
 }
 .img {
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
+  position: relative;
+  top: -5px;
+  left: 3px;
 }
 .el-submenu .el-menu-item {
   min-width: 0px;

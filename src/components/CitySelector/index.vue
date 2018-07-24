@@ -1,11 +1,14 @@
 <style lang="less" scoped>
 .select-1 {
-  width: 200px;
+  width: 140px;
   margin-right: 10px;
+}
+.citySelector{
+  width: 530px;
 }
 </style>
 <template>
-  <div>
+  <div class='citySelector'>
     <el-select clearable :value="province_id" placeholder="请选择省份" class='select-1' @change="changeProvince" :disabled="disabled">
       <el-option v-for="item in provinceOptions" :key="item.code" :label="item.name" :value="item.code"></el-option>
     </el-select>
