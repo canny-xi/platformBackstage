@@ -5,11 +5,12 @@ import Login from '@/page/Login'
 import Company from '@/page/Company'
 import Project from '@/page/Project'
 import Agent from '@/page/Agent'
+import House from '@/page/House'
+import Transaction from '@/page/Transaction'
 import Operation from '@/page/Operation'
 import AddCompany from '@/page/Company/AddCompany'
 import Examine from '@/page/Company/Examine'
 import ShowExamine from '@/page/Company/ShowExamine'
-
 
 Vue.use(Router);
 
@@ -22,13 +23,18 @@ export default new Router({
       component: Login
     },
     {
-      path: '/company',
+      path: '/operation',
       component: Container,
       children: [
         {
           path: '',
+          name: 'operation',
+          component: Operation,
+        },
+        {
+          path: '/company',
           name: 'company',
-          component: Company,
+          component: Company
         },
         {
           path: '/addCompany',
@@ -46,7 +52,7 @@ export default new Router({
           component: ShowExamine
         },
 
-        
+
       ]
     },
     {
@@ -72,16 +78,28 @@ export default new Router({
       ]
     },
     {
-      path: '/operation',
+      path: '/transaction',
       component: Container,
       children: [
         {
           path: '',
-          name: 'operation',
-          component: Operation,
+          name: 'transaction',
+          component: Transaction,
         },
       ]
     },
+    {
+      path: '/house',
+      component: Container,
+      children: [
+        {
+          path: '',
+          name: 'house',
+          component: House,
+        },
+      ]
+    },
+
 
 
 

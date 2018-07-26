@@ -1,6 +1,6 @@
 <template>
   <!-- 待审核-->
-  <el-table :data="tableData"  style="width: 100%">
+  <el-table :data="tableData" style="width: 100%">
     <el-table-column prop="" label="序号" align='center' width="70px">
       <template slot-scope="scope">{{getIndex(scope)}}</template>
     </el-table-column>
@@ -38,7 +38,8 @@ export default {
       }
     },
     examine(row) {
-      this.$emit("examine", row);
+       this.$router.push({ name: "examine" });
+      // this.$emit("showExamine", row);
     }
   }
 };

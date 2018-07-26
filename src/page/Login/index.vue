@@ -11,7 +11,7 @@
   <div class='login'>
     <div class='title'>
       <div class='input-row'>
-        <img src='../../assets/images/logo@3x.png' class='input-img' />
+        <img src='../../assets/images/logo.png' class='input-img' />
       </div>
       <div class='input-row'>
         <el-input v-model="submitForm.account" class='input' placeholder="请输入账号"></el-input>

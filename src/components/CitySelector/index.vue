@@ -4,7 +4,7 @@
   margin-right: 10px;
 }
 .citySelector{
-  width: 530px;
+  width: 540px;
 }
 </style>
 <template>

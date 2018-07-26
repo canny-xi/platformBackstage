@@ -1,10 +1,10 @@
 <style lang="less" scoped src='./index.less'>
 </style>
 <template>
-    <div class='examine'>
+    <div class='showExamine'>
         <div class='title'>
             <div>审核</div>
-            <el-button type="primary" class='title-btn-left-1'>审核通过</el-button>
+                <el-button type="primary" class='title-btn-left-1'>审核通过</el-button>
             <el-button type="primary" class='title-btn-left'>拒绝</el-button>
             <el-button type="primary" class='title-btn' @click='cancel'>关闭</el-button>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <!-- 审核通过-->
-  <el-table :data="tableData"  style="width: 100%">
+  <el-table :data="tableData" style="width: 100%">
     <el-table-column prop="" label="序号" align='center' width="70px">
       <template slot-scope="scope">{{getIndex(scope)}}</template>
     </el-table-column>
@@ -25,7 +25,7 @@
     </el-table-column>
     <el-table-column label="操作" align='center' width="100px">
       <template slot-scope="scope">
-        <el-button type="text">查看</el-button>
+        <el-button type="text" @click='showExamine(scope.row)'>查看</el-button>
         <el-button type="text" @click='stop(scope.row)'>停用</el-button>
       </template>
     </el-table-column>
@@ -49,12 +49,16 @@ export default {
     stop(row) {
       // this.$emit("examine", row);
     },
-     state(row) {
+    state(row) {
       if (row == 1) {
         return "已停用";
       } else if (row == 2) {
         return "使用中";
       }
+    },
+    showExamine(row) {
+      this.$router.push({ name: "showExamine" });
+      // this.$emit("showExamine", row);
     }
   }
 };

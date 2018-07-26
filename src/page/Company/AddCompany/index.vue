@@ -12,6 +12,10 @@
     height: 30px;
     line-height: 30px;
   }
+  .el-form-item {
+    margin-bottom: 8px;
+    margin-right: 10%;
+  }
 }
 </style>
 
@@ -29,7 +33,7 @@
             <div class='content'>
                 <el-form :model="sumbitForm">
                     <div>
-                        
+
                     </div>
                     <div class='input-title'>公司全称:</div>
                     <el-form-item class='input'>
@@ -46,25 +50,19 @@
                         </el-radio-group>
                     </el-form-item>
 
-                    <el-form-item label="项目地址">
+                    <el-form-item label="项目地址" class='ddress'>
                         <!-- 下拉组建 -->
                         <city-selector :province.sync="sumbitForm.province" :city.sync="sumbitForm.city" :district.sync="sumbitForm.district" @changeDistrict="changeDistrict" />
-                    </el-form-item>
-                    <el-form-item class='input'>
-                        <el-input v-model="sumbitForm.absolute_address" auto-complete="off" placeholder="请输入具体地址"></el-input>
-                    </el-form-item>
-                    <div class='input-title'>统一社会信用代码:</div>
-                    <el-form-item class='input'>
-                        <el-input v-model="sumbitForm.developer_name" auto-complete="off" placeholder="请输入统一社会信用代码"></el-input>
-                    </el-form-item>
-                    <el-form-item label="工商营业执照">
-                        <div>支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过2M</div>
-                        <el-button>添加附件</el-button>
+                        <el-input class='input-address' v-model="sumbitForm.absolute_address" auto-complete="off" placeholder="请输入具体地址"></el-input>
                     </el-form-item>
                     <div class='input-title'>公司法人:</div>
                     <el-form-item class='input'>
                         <el-input v-model="sumbitForm.project_hold_name" auto-complete="off" placeholder="请输入公司法人"></el-input>
                     </el-form-item>
+                    <div class='input-title'>统一社会信用代码:</div>
+                    <el-form-item class='input'>
+                        <el-input v-model="sumbitForm.developer_name" auto-complete="off" placeholder="请输入统一社会信用代码"></el-input>
+                    </el-form-item><br>
                     <div class='input-title'>法人电话:</div>
                     <el-form-item class='input'>
                         <el-input v-model="sumbitForm.project_hold_phone" auto-complete="off" placeholder="请输入法人电话"></el-input>
@@ -73,21 +71,43 @@
                     <el-form-item class='input'>
                         <el-input v-model="sumbitForm.project_hold_name" auto-complete="off" placeholder="请输入身份证号码"></el-input>
                     </el-form-item>
-                    <el-form-item label="身份证照片">
-                        <div>身份证上传正面，反面各一张。支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过2M</div>
-                        <el-button>添加附件</el-button>
+
+                    <el-form-item label="工商营业执照">
+                        <div style='color:#aaa'>支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过2M</div>
+                        <el-button class='add-btn'>添加附件</el-button>
+                        <div class='idcard-img'>
+                            <span class='id-card-up'>
+                                <img class='img' src='../../../assets/images/idCard.png' />
+                            </span>
+                        </div>
+                    </el-form-item>
+                    <el-form-item label="身份证照片" class='idcard'>
+                        <div style='color:#aaa'>身份证上传正面，反面各一张。支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过2M</div>
+                        <el-button class='add-btn'>添加附件</el-button>
+                        <div class='idcard-img'>
+                            <span class='id-card-up'>
+                                <img class='img' src='../../../assets/images/1.jpg' />
+                            </span>
+                            <span class='id-card-dowm'>
+                                <img class='img' src='../../../assets/images/Document_2@2x.png' />
+                            </span>
+                        </div>
                     </el-form-item>
                     <div class='input-title'>负责人:</div>
-                    <el-form-item  class='input'>
+                    <el-form-item class='input'>
                         <el-input v-model="sumbitForm.project_hold_phone" auto-complete="off" placeholder="请输入负责人"></el-input>
                     </el-form-item>
                     <div class='input-title'>联系电话:</div>
-                    <el-form-item  class='input'>
+                    <el-form-item class='input'>
                         <el-input v-model="sumbitForm.project_hold_name" auto-complete="off" placeholder="请输入联系电话"></el-input>
-                    </el-form-item>
+                    </el-form-item><br>
                     <div class='input-title'>其他证明资料:</div>
                     <el-form-item class='input'>
-                        <el-button>添加附件</el-button>
+                        <el-button class='add-btn absolute'>添加附件</el-button>
+                    </el-form-item>
+                    <div class='remake'>备注:</div>
+                    <el-form-item>
+                        <el-input v-model="sumbitForm.project_hold_name" auto-complete="off" type="textarea" class='textarea'></el-input>
                     </el-form-item>
                 </el-form>
             </div>
