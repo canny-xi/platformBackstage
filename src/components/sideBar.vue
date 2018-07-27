@@ -1,92 +1,103 @@
 <style lang="less" scoped src="./icon.less"></style>
 
 <style scoped lang="less">
-.text {
-  font-size: 16px;
-  color: #999;
-  width: 207px;
-  &.is-active {
-    color: #fff;
-    background-color: #6f7e95;
-  }
-}
-.delent {
-  font-size: 13px;
-  color: #999;
-  text-align: center;
-}
 .sideBar {
   background-color: #fff;
-}
-.title {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 59px;
-  background: #fefefe;
-  z-index: 110;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-}
-.top-name {
-  position: absolute;
-  top: 28px;
-  right: 370px;
-  font-size: 14px;
-  color: #666;
-  vertical-align: middle;
-}
-.img-name {
-  vertical-align: middle;
-  width: 22px;
-  height: 22px;
-}
-.top-one {
-  position: absolute;
-  top: 28px;
-  right: 160px;
-  font-size: 14px;
-  color: #666;
-  vertical-align: middle;
-}
-.top-city {
-  position: absolute;
-  top: 28px;
-  right: 280px;
-  font-size: 14px;
-  color: #666;
-  vertical-align: middle;
-}
-.top-text {
-  position: absolute;
-  top: 19px;
-  right: 50px;
-  font-size: 15px;
-}
-.top-img {
-  vertical-align: top;
-  position: relative;
-  top: -5px;
-  width: 25px;
-  height: 25px;
-}
+  .text {
+    font-size: 16px;
+    color: #999;
+    width: 207px;
+    &.is-active {
+      color: #fff;
+      background-color: #6f7e95;
+    }
+  }
+  .delent {
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+  }
+  .title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 59px;
+    background: #fefefe;
+    z-index: 110;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  .top-name {
+    position: absolute;
+    top: 28px;
+    right: 370px;
+    font-size: 14px;
+    color: #666;
+    vertical-align: middle;
+  }
+  .img-name {
+    vertical-align: middle;
+    width: 22px;
+    height: 22px;
+  }
+  .top-one {
+    position: absolute;
+    top: 28px;
+    right: 160px;
+    font-size: 14px;
+    color: #666;
+    vertical-align: middle;
+  }
+  .top-city {
+    position: absolute;
+    top: 28px;
+    right: 280px;
+    font-size: 14px;
+    color: #666;
+    vertical-align: middle;
+  }
+  .top-text {
+    position: absolute;
+    top: 19px;
+    right: 50px;
+    font-size: 15px;
+  }
+  .top-img {
+    vertical-align: top;
+    position: relative;
+    top: -5px;
+    width: 25px;
+    height: 25px;
+  }
 
-.tou {
-  padding-top: 12px;
-  padding-left: 11px;
-  display: inline-block;
-  vertical-align: middle;
-  background-color: #343f51;
-  height: 59px;
-  padding-right: 10px;
-}
-.img {
-  width: 100%;
-  height: 80%;
-  position: relative;
-  top: -5px;
-  left: 0;
+  .tou {
+    padding-top: 12px;
+    padding-left: 11px;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #343f51;
+    height: 59px;
+    padding-right: 10px;
+  }
+  .img {
+    width: 100%;
+    height: 80%;
+    position: relative;
+    top: -5px;
+    left: 0;
+  }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 207px;
+    min-height: 400px;
+  }
+  .opertion {
+    position: absolute;
+    top: 71px;
+    left: 5px;
+    background-color: #343f51;
+    width: 202px;
+  }
 }
 </style>
 <style lang="less">
@@ -103,17 +114,21 @@
     height: 38px;
     line-height: 38px;
   }
-  .sidebar-menu {
+  .el-menu-vertical-demo {
     position: fixed !important;
     left: 0;
     top: 0;
     height: 100%;
     z-index: 100;
-    width: 207px;
-    margin-top: 55px;
+    margin-top: 109px;
     text-align: left;
     background-color: #343f51;
-    padding-top: 10px;
+  }
+  .el-radio-button:first-child .el-radio-button__inner {
+    border: none;
+  }
+  .el-radio-button__inner {
+    border: none;
   }
 }
 </style>
@@ -138,7 +153,11 @@
         <el-button type='text' class='top-text'><img class='top-img' src='../assets/images/exit@2x.png' />退出</el-button>
       </span>
     </div>
-    <el-menu :default-active="activeIndex" class="sidebar-menu" @open="menuOpen" @close="menuOpen">
+    <el-radio-group v-model="isCollapse" class='opertion'>
+      <el-radio-button :label="false">展开</el-radio-button>
+      <el-radio-button :label="true">收起</el-radio-button>
+    </el-radio-group>
+    <el-menu :default-active="activeIndex" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
       <el-submenu index='operation'>
         <template slot="title">
           <span class='delent' @click="handleSelect('operation')">
@@ -254,7 +273,8 @@ export default {
     return {
       activeIndex: "",
       company_name: "",
-      name: ""
+      name: "",
+      isCollapse: true
     };
   },
   created() {
@@ -265,6 +285,12 @@ export default {
     this.company_name = localStorage.getItem("company_name");
   },
   methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    },
     cancel() {
       this.$router.push({
         name: "login"

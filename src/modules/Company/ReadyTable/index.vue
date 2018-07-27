@@ -38,8 +38,7 @@ export default {
       }
     },
     examine(row) {
-       this.$router.push({ name: "examine" });
-      // this.$emit("showExamine", row);
+      this.$emit("examine", row);
     }
   }
 };

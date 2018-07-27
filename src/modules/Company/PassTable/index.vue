@@ -47,7 +47,7 @@ export default {
       }
     },
     stop(row) {
-      // this.$emit("examine", row);
+      this.$emit("stop", row);
     },
     state(row) {
       if (row == 1) {
@@ -56,9 +56,8 @@ export default {
         return "使用中";
       }
     },
-    showExamine(row) {
-      this.$router.push({ name: "showExamine" });
-      // this.$emit("showExamine", row);
+    examine(row) {
+      this.$emit("examine", row);
     }
   }
 };

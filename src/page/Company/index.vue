@@ -5,19 +5,44 @@
   .el-dialog {
     width: 35%;
   }
-  .el-input__inner{
-    height: 41px;
-    line-height:41px;
+  .el-input__inner {
+    height: 35px;
+    line-height: 35px;
   }
-  .el-table th{
-        background-color: #cad2dd;
-        padding: 4px 0;
-        color:#000;
-       font-weight: 500;
+  .el-table th {
+    background-color: #cad2dd;
+    padding: 4px 0;
+    color: #000;
+    font-weight: 500;
   }
-  .el-table td{
-        padding:0;
+  .el-table td {
+    padding: 0;
   }
+  .el-form-item__content{
+    line-height:0;
+  }
+  .el-dialog__body{
+    padding:0px 30px;
+  }
+  .el-button--primary {
+    background: #6f7e95;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+  }
+  .el-button--primary:hover {
+    background: #929eaf;
+  }
+  .el-button.el-button--default{
+    background: #6f7e95;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color:#fff;
+  }
+   .el-button.el-button--default:hover{
+       background: #929eaf;
+   }
 }
 </style>
 
@@ -26,7 +51,7 @@
     <div class='title'>
       <div class='block-title'>
         <div class='block-textAdd-query'>
-          <div class='title-text'>当前位置：项目管理</div>
+          <div class='title-text'>当前位置：公司管理 - 公司列表</div>
           <div class='query-all'>
             <el-input v-model="searchObj.search" class='query' placeholder="可按公司名称/公司编号"></el-input>
             <el-button type="primary">查询</el-button>
@@ -42,8 +67,8 @@
     </div>
     <div>
       <ready-table v-if="searchObj.tag_search == 0" :tableData="tableData" @examine="examine" />
-      <pass-table v-if="searchObj.tag_search == 1" :tableData="tableData" />
-      <no-pass-table v-if="searchObj.tag_search == 2" :tableData="tableData" />
+      <pass-table v-if="searchObj.tag_search == 1" :tableData="tableData" @examine='examine' @stop='stop'/>
+      <no-pass-table v-if="searchObj.tag_search == 2" :tableData="tableData" @examine="examine" @reCompany='reCompany' />
       <el-pagination v-if="tableData.length > 0" background class='page' layout="prev, pager, next" :page-size="pageSize" :current-page="searchObj.page" :total="total" @current-change="pageChange">
       </el-pagination>
     </div>
@@ -135,7 +160,7 @@ export default {
           source: 1,
           num: 888888,
           xxname: "猪头",
-          state:1
+          state: 1
         },
         {
           id: 2,
@@ -150,7 +175,7 @@ export default {
           source: 2,
           num: 222222,
           xxname: "猪头",
-          state:2
+          state: 2
         }
       ]
     };
@@ -163,12 +188,11 @@ export default {
     cancelStop() {
       this.stopShow = false;
     },
-
-    showExamine(row) {
-      this.$router.push({ name: "showExamine" });
-    },
     examine(row) {
       this.$router.push({ name: "examine", query: { id: row.id } });
+    },
+    reCompany() {
+      this.$router.push({ name: "addCompany" });
     },
     addCompany() {
       this.$router.push({ name: "addCompany" });

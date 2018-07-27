@@ -11,6 +11,8 @@ position: relative;
 }
     .title-info{
         text-align: left;
+        position: fixed;
+        top: 70px;
     }
     .idcard-img{
         width: 700px;
@@ -56,19 +58,22 @@ position: relative;
         background-color: rgb(102,177,255)
     }
     .company{
-        margin:10px auto;
+        margin:30px auto;
         width: 800px;
         padding:0 30px 20px 30px;
         background-color: #fefefe;
         border-radius: 10px;
         .title{
+            width: 860px;
             background-color: #cad2dd;
-            position: relative;
+            position: fixed;
+            top: 100px;
             text-align: left;
             height: 41px;
             margin-left:-30px;
             margin-right:-30px;
             line-height: 41px;
+            z-index: 99;
             .text{
                 padding-left: 30px;
             }
@@ -92,11 +97,17 @@ position: relative;
         }
         .content{
     text-align: left;
+    padding-top: 20px;
     .select{
     }
     .input-title{
         display: inline-block;
         font-size: 14px;
+        color: #606266;
+    }
+    .input-title_bold{
+        display: inline-block;
+        font-size: 16px;
         color: #606266;
     }
             .input{
@@ -105,4 +116,19 @@ position: relative;
             }
         }
     }
+    .upload_title{
+        position: relative;
+        height: 30px;
+    }
+    .uploadFile {
+        position: absolute;
+        right: 0;
+        top: -5px;
+    }
+    .tableIn-btn {
+        margin-top: 15px;
+        text-align: right;
+    }
+    
+
 }

@@ -1,6 +1,6 @@
 <template>
   <!-- 审核不通过-->
-  <el-table :data="tableData"  style="width: 100%">
+  <el-table :data="tableData" style="width: 100%">
     <el-table-column prop="" label="序号" align='center' width="70px">
       <template slot-scope="scope">{{getIndex(scope)}}</template>
     </el-table-column>
@@ -20,7 +20,7 @@
     <el-table-column label="操作" align='center' width="130px">
       <template slot-scope="scope">
         <el-button type="text" @click='examine(scope.row)'>查看</el-button>
-        <el-button type="text">重新申请</el-button>
+        <el-button type="text" @click='reCompany(scope.row)'>重新申请</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -42,6 +42,9 @@ export default {
     },
     examine(row) {
       this.$emit("examine", row);
+    },
+    reCompany(row) {
+          this.$emit("reCompany", row);
     }
   }
 };
