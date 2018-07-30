@@ -1,7 +1,7 @@
 <style lang="less" scoped src='./index.less'>
 </style>
 <style lang="less">
-.addCompany {
+.addCompanyTable {
   .el-button--primary {
     background: #6f7e95;
     border: none;
@@ -32,7 +32,7 @@
 </style>
 
 <template>
-    <div class='addCompany'>
+    <div class='addCompanyTable'>
         <div class='title-info'>
             当前位置：公司管理 - 公司列表 - 新增
         </div>

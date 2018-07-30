@@ -172,8 +172,8 @@
             <i class="icon-project"></i>项目管理</span>
         </template>
         <el-menu-item index="agent" class='people' @click="handleSelect('agent')">项目排名表</el-menu-item>
-        <el-menu-item index="examinePeople" class='people' @click="handleSelect('examinePeople')">新房</el-menu-item>
-        <el-menu-item index="quitPeople" class='people' @click="handleSelect('quitPeople')">二手房</el-menu-item>
+        <el-menu-item index="newHouse" class='people' @click="handleSelect('newHouse')">新房</el-menu-item>
+        <el-menu-item index="twoHouse" class='people' @click="handleSelect('twoHouse')">二手房</el-menu-item>
         <!-- <el-menu-item index="quitPeople" class='people' @click="handleSelect('quitPeople')">认证详情</el-menu-item> -->
       </el-submenu>
       <el-submenu index='agent'>
@@ -183,6 +183,7 @@
         </template>
         <el-menu-item index="agent" class='people' @click="handleSelect('agent_ranking')">经纪人排名</el-menu-item>
         <el-menu-item index="agentList" class='people' @click="handleSelect('agentList')">经纪人列表</el-menu-item>
+        <el-menu-item index="agentAppeal" class='people' @click="handleSelect('agentAppeal')">经纪人申诉列表</el-menu-item>
       </el-submenu>
       <el-submenu index='transaction'>
         <template slot="title">

@@ -4,13 +4,21 @@ import Container from '@/page/Container'
 import Login from '@/page/Login'
 import Company from '@/page/Company'
 import Project from '@/page/Project'
+import NewHouse from '@/page/Project/NewHouse'
+import TwoHouse from '@/page/Project/TwoHouse'
+import AddProject from '@/page/Project/AddProject'
+
 import Agent from '@/page/Agent'
+import AgentList from '@/page/Agent/AgentList'
+import SeeAgentInfo from '@/page/Agent/SeeAgentInfo'
+import AgentAppeal from '@/page/Agent/AgentAppeal'
+
+
 import House from '@/page/House'
 import Transaction from '@/page/Transaction'
 import Operation from '@/page/Operation'
 import AddCompany from '@/page/Company/AddCompany'
 import Examine from '@/page/Company/Examine'
-import ShowExamine from '@/page/Company/ShowExamine'
 
 Vue.use(Router);
 
@@ -46,11 +54,6 @@ export default new Router({
           name: 'examine',
           component: Examine
         },
-        {
-          path: '/showExamine',
-          name: 'showExamine',
-          component: ShowExamine
-        },
 
 
       ]
@@ -64,6 +67,24 @@ export default new Router({
           name: 'project',
           component: Project,
         },
+        {
+          path: 'twoHouse',
+          name: 'twoHouse',
+          component: TwoHouse,
+        },
+        {
+          path: 'newHouse',
+          name: 'newHouse',
+          component: NewHouse,
+        },
+        {
+          path: 'addProject',
+          name: 'addProject',
+          component: AddProject,
+        },
+
+
+        
       ]
     },
     {
@@ -75,6 +96,24 @@ export default new Router({
           name: 'agent',
           component: Agent,
         },
+        {
+          path: '/agentList',
+          name: 'agentList',
+          component: AgentList,
+        },
+        {
+          path: '/seeAgentInfo',
+          name: 'seeAgentInfo',
+          component: SeeAgentInfo,
+        },
+        {
+          path: '/agentAppeal',
+          name: 'agentAppeal',
+          component: AgentAppeal,
+        },
+
+
+
       ]
     },
     {
@@ -97,6 +136,14 @@ export default new Router({
           name: 'house',
           component: House,
         },
+
+
+
+
+
+
+
+        
       ]
     },
 

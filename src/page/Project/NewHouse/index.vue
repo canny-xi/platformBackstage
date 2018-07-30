@@ -51,11 +51,11 @@
     <div class='title'>
       <div class='block-title'>
         <div class='block-textAdd-query'>
-          <div class='title-text'>当前位置：公司管理 - 公司列表</div>
+          <div class='title-text'>当前位置：项目管理 - 新房</div>
           <div class='query-all'>
             <el-input v-model="searchObj.search" class='query' placeholder="可按公司名称/公司编号"></el-input>
             <el-button type="primary">查询</el-button>
-            <el-button type="primary" @click='addCompany'>新增</el-button>
+            <el-button type="primary" @click='addProject'>新增</el-button>
           </div>
         </div>
         <div class='opertion'>
@@ -72,30 +72,12 @@
       <el-pagination v-if="tableData.length > 0" background class='page' layout="prev, pager, next" :page-size="pageSize" :current-page="searchObj.page" :total="total" @current-change="pageChange">
       </el-pagination>
     </div>
-    <el-dialog title="停用" :visible.sync="stopShow" class='dialog' @close="cancelStop">
-      <el-form>
-        <el-form-item label="停用原因">
-          <el-select class='select'>
-            <el-option value='公司违规操作'>公司违规操作</el-option>
-            <el-option value='双方终止合同'>双方终止合同</el-option>
-            <el-option value='其他'>其他</el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="备注">
-          <el-input v-model="remark" class='textarea' type="textarea" />
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="cancelStop">取 消</el-button>
-        <el-button type="primary">确 定</el-button>
-      </div>
-    </el-dialog>
   </div>
 </template>
 <script>
-import ReadyTable from "@/modules/Company/ReadyTable";
-import PassTable from "@/modules/Company/PassTable";
-import NoPassTable from "@/modules/Company/NoPassTable";
+import ReadyTable from "@/modules/Project/ReadyTable";
+import PassTable from "@/modules/Project/PassTable";
+import NoPassTable from "@/modules/Project/NoPassTable";
 export default {
   data() {
     return {
@@ -114,39 +96,6 @@ export default {
       total: 1,
       tableData: [
         {
-          state_examine: 1,
-          name: "奇葩公司",
-          type: "房产商",
-          city: "成都市",
-          quyu: "金牛区",
-          peo_name: "李方",
-          tel: "13921332133",
-          xx: "ZZJGDMNO1",
-          time: "2017/12/12",
-          source: 1,
-          state: 1,
-          xxname: "王五",
-          num: "888888"
-        }
-      ],
-      tableData: [
-        {
-          state_examine: 0,
-          name: "上滩一号",
-          type: "房产商",
-          city: "成都市",
-          quyu: "金牛区",
-          peo_name: "张宇",
-          tel: "13921332133",
-          xx: "ZZJGDMNO1",
-          time: "2017/12/12",
-          source: 1,
-          xxname: "王五",
-          num: "888888"
-        }
-      ],
-      tableData: [
-        {
           id: 1,
           state_examine: 2,
           name: "云算科技",
@@ -154,13 +103,16 @@ export default {
           city: "成都市",
           quyu: "金牛区",
           peo_name: "刘丽",
-          tel: "13921332133",
-          xx: "ZZJGDMNO1",
-          time: "2017/12/12",
+          tel: "开发商",
+          xx: "云算科技",
+          time: "小王",
           source: 1,
           num: 888888,
           xxname: "猪头",
-          state: 1
+          state: 1,
+          a: "2017-2-26",
+          b: "2018-6-25",
+          c: "张三"
         },
         {
           id: 2,
@@ -169,13 +121,16 @@ export default {
           city: "眉山市",
           quyu: "什么区",
           peo_name: "李四",
-          tel: "13888888888",
-          xx: "XXJGDMNO2",
-          time: "2017/1/23",
+          tel: "什么商",
+          xx: "佳林房产",
+          time: "小王",
           source: 2,
           num: 222222,
           xxname: "猪头",
-          state: 2
+          state: 2,
+          a: "2017-2-26",
+          b: "2018-6-25",
+          c: "张三"
         }
       ]
     };
@@ -188,14 +143,8 @@ export default {
     cancelStop() {
       this.stopShow = false;
     },
-    examine(row) {
-      this.$router.push({ name: "examine", query: { id: row.id } });
-    },
-    reCompany() {
-      this.$router.push({ name: "addCompany" });
-    },
-    addCompany() {
-      this.$router.push({ name: "addCompany" });
+    addProject() {
+      this.$router.push({ name: "addProject" });
     },
     pageChange(page) {
       this.searchObj.page = page;

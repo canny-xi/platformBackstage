@@ -1,6 +1,6 @@
-.showExamine{
+.seeAgentInfo{
     margin:0 auto;
-    width: 800px;
+    width: 900px;
     padding:0 30px 20px 30px;
     background-color: #fefefe;
     border-radius: 8px;
@@ -10,10 +10,28 @@
         top: 70px;
         left: 220px;
     }
+    .examine-info{
+        text-align: left;
+        margin-top: 15px;
+        border: 1px solid #eee;
+        padding:10px 20px;
+        .input{
+            width: 200px;
+            display: inline-block;
+        }
+    }
+    .accout-info{
+        text-align: left;
+        margin-top: 10px;
+        .accout_table{
+            margin-top: 10px;
+        }
+    }
+  
     .title{
         background-color: #cad2dd;
         position: fixed;
-        width: 860px;
+        width: 960px;
         z-index: 99;
         text-align: left;
         height: 41px;
@@ -38,6 +56,9 @@
         .title-btn-left:hover{
             background: #929eaf;
         }
+        .title-btn-left-1:hover{
+            background: #929eaf;
+        }
         .title-btn-left{
             position: absolute;
             top: 3px;
@@ -49,7 +70,7 @@
         }
         .title-btn-left-1{
             position: absolute;
-            top: -10px;
+            top: 3px;
             right: 180px;
             background: #6f7e95;
             border: none;
@@ -60,17 +81,17 @@
     .remake{
         font-size: 14px;
     color: #606266;
-    width: 360px;
+    width: 445px;
     }
     .idcard-img{
+        text-align: right;
         width: 700px;
-        height: 170px;
-        margin-top: 10px;
+        height: 160px;
     }
     .idcard-img .id-card-dowm{
         display: inline-block;
         height: 100%;
-        width: 49%;
+        width: 48%;
         .img{
             width: 70%;
             height: 100%;
@@ -82,7 +103,7 @@
     .idcard-img .id-card-up{
         display: inline-block;
         height: 100%;
-        width: 50%;
+        width: 48%;
         .img{
             width: 70%;
             height: 100%;
@@ -105,21 +126,29 @@
         font-size: 14px;
         color: #606266;
     }
-    .input-address{
-        width: 260px;
-        position: absolute;
-        right: -80px;
-        top: 0;
-    }
     .address{
     position: relative;
     }
     .content{
         text-align: left;
         padding-top: 45px;
-        .input{
-            width: 200px;
+        .input1{
+            width: 400px;
             display: inline-block;
         }
+        .input{
+            width: 190px;
+            display: inline-block;
+        }
+        .input2{
+            width: 140px;
+            display: inline-block;
+        }
+       
+    }
+    .input-w-140px{
+        width: 140px;
+        display: inline-block;
+        margin-right: 35px;
     }
 }

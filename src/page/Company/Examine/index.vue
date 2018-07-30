@@ -19,14 +19,13 @@
   .el-table td {
     padding: 0;
   }
-  
 }
 </style>
 
 <template>
     <div class='showExamine'>
         <div class='title-info'>
-            当前位置：公司管理 - 公司列表 - 待审核 - 审核信息
+            当前位置：公司管理 - 公司列表 - 审核信息
         </div>
         <div class='title'>
             <div class='text'>审核信息</div>
@@ -126,6 +125,42 @@
                 </el-table>
             </el-form>
         </div>
+        <div class='examine-info'>
+            <div>审核信息</div>
+            <el-form :model="sh">
+                <div class='input-title'>审核人员：</div>
+                <el-form-item class='input'>
+                    <el-input class='input' v-model="sh.sh_name" auto-complete="off"></el-input>
+                </el-form-item>
+                <div class='input-title'>审核通过时间：</div>
+                <el-form-item class='input'>
+                    <el-input class='input' v-model="sh.sh_time" auto-complete="off"></el-input>
+                </el-form-item>
+                <div class='input-title'>拒绝类型：</div>
+                <el-form-item class='input'>
+                    <el-input class='input' v-model="sh.stats" auto-complete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="备注" class='remake'>
+                    <el-input v-model="sh.sh_remake" auto-complete="off" type="textarea"></el-input>
+                </el-form-item>
+            </el-form>
+        </div>
+        <div class='accout-info'>
+            <div>帐号信息</div>
+            <el-table :data="accountsForm" class='accout_table'>
+                <el-table-column prop="" label="序号" align='center' width="70px">
+                    <template slot-scope="scope">{{getIndex(scope)}}</template>
+                </el-table-column>
+                <el-table-column label="帐号" property="accout" align='center'></el-table-column>
+                <el-table-column label="管理员" property="name" align='center'></el-table-column>
+                <el-table-column label="电话号码" property="tel" align='center'></el-table-column>
+                <el-table-column label="状态" align='center'>
+                    <template slot-scope='scope'>
+                        {{accoutStatus(scope.row.status)}}
+                    </template>
+                </el-table-column>
+            </el-table>
+        </div>
     </div>
 </template>
 <script>
@@ -134,11 +169,25 @@ export default {
   data() {
     return {
       sumbitForm: {},
+      sh: {
+        sh_name: "张三",
+        sh_time: "2018-2-25",
+        stats: "资料不全",
+        sh_remake: "备注信息"
+      },
       form: [
         {
           file_name: "学习资料",
           create_name: "张三",
           create_time: "2018-7-28"
+        }
+      ],
+      accountsForm: [
+        {
+          accout: "88888888",
+          name: "李四",
+          tel: "13666666666",
+          status: "1"
         }
       ]
     };
@@ -155,6 +204,17 @@ export default {
           this.map.centerAndZoom(point, 16);
         }
       });
+    },
+    getIndex(row) {
+      let index = row.$index + 1;
+      return index;
+    },
+    accoutStatus(row) {
+      if (row == 1) {
+        return "使用中";
+      } else {
+        return "已停用";
+      }
     }
   },
   components: {
