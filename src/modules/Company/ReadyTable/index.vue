@@ -17,7 +17,7 @@
     <el-table-column prop="time" label="申请时间" align='center' width="140px"></el-table-column>
     <el-table-column label="操作" align='center' width="130px">
       <template slot-scope="scope">
-        <el-button type="text" @click='examine(scope.row)'>审核</el-button>
+        <el-button type="text" @click='examine(scope.row,1)'>审核</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -37,8 +37,8 @@ export default {
         return "外部申请";
       }
     },
-    examine(row) {
-      this.$emit("examine", row);
+    examine(row,type) {
+      this.$emit("examine", row,type);
     }
   }
 };

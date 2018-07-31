@@ -62,7 +62,7 @@
                         </el-radio-group>
                     </el-form-item>
 
-                    <el-form-item label="项目地址" class='address'>
+                    <el-form-item label="公司地址" class='address'>
                         <!-- 下拉组建 -->
                         <city-selector :province.sync="sumbitForm.province" :city.sync="sumbitForm.city" :district.sync="sumbitForm.district" @changeDistrict="changeDistrict" />
                         <el-input class='input-address' v-model="sumbitForm.absolute_address" auto-complete="off" placeholder="请输入具体地址"></el-input>
@@ -79,22 +79,36 @@
                     <el-form-item class='input'>
                         <el-input v-model="sumbitForm.project_hold_phone" auto-complete="off" placeholder="请输入法人电话"></el-input>
                     </el-form-item>
-                    <div class='input-title'>身份证号码:</div>
+                    <div class='input-title'>法人身份证号码:</div>
                     <el-form-item class='input'>
                         <el-input v-model="sumbitForm.project_hold_name" auto-complete="off" placeholder="请输入身份证号码"></el-input>
                     </el-form-item>
 
                     <el-form-item label="工商营业执照">
-                        <div style='color:#aaa'>支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过2M</div>
+                        <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
+                            <i class="el-icon-plus"></i>
+                        </el-upload>
+                        <el-dialog :visible.sync="dialogVisible">
+                            <img width="100%" :src="dialogImageUrl" alt="">
+                        </el-dialog>
+                        <!-- <div style='color:#aaa'>支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过2M</div>
                         <el-button class='add-btn'>添加附件</el-button>
                         <div class='idcard-img'>
                             <span class='id-card-up'>
                                 <img class='img' src='../../../assets/images/idCard.png' />
                             </span>
-                        </div>
+                        </div> -->
                     </el-form-item>
+
                     <el-form-item label="身份证照片" class='idcard'>
-                        <div style='color:#aaa'>身份证上传正面，反面各一张。支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过2M</div>
+
+                        <el-upload class='idcard-img-1' action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
+                            <i class="el-icon-plus"></i>
+                        </el-upload>
+                        <el-upload class='idcard-img' action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
+                            <i class="el-icon-plus"></i>
+                        </el-upload>
+                        <!-- <div style='color:#aaa'>身份证上传正面，反面各一张。支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过2M</div>
                         <el-button class='add-btn'>添加附件</el-button>
                         <div class='idcard-img'>
                             <span class='id-card-up'>
@@ -103,7 +117,7 @@
                             <span class='id-card-dowm'>
                                 <img class='img' src='../../../assets/images/Document_2@2x.png' />
                             </span>
-                        </div>
+                        </div> -->
                     </el-form-item>
                     <div class='input-title'>负责人:</div>
                     <el-form-item class='input'>
@@ -120,7 +134,7 @@
                     <div class='upload_title'>
                         <div class='input-title_bold'>其他证明资料</div>
                         <el-upload class="uploadFile" :auto-upload="false" action="" :on-change="fileUpload">
-                            <el-button class='add-btn' ref="uploadBtn"  :show-file-list="false">点击上传</el-button>
+                            <el-button class='add-btn' ref="uploadBtn" :show-file-list="false">点击上传</el-button>
                         </el-upload>
                     </div>
                     <el-table :data="form">
@@ -133,6 +147,7 @@
                         <el-table-column property="create_name" label="上传人员" align='center'></el-table-column>
                         <el-table-column property="create_time" label="上传时间" align='center'></el-table-column>
                     </el-table>
+
                 </el-form>
             </div>
         </div>
@@ -144,6 +159,8 @@ import CitySelector from "../../../components/CitySelector";
 export default {
   data() {
     return {
+      dialogImageUrl: "",
+      dialogVisible: false,
       sumbitForm: {},
       form: [
         {
@@ -156,6 +173,14 @@ export default {
   },
   mounted() {},
   methods: {
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePictureCardPreview(file) {
+      this.dialogImageUrl = file.url;
+      this.dialogVisible = true;
+    },
+
     fileUpload() {},
     cancel() {
       this.$router.go(-1);

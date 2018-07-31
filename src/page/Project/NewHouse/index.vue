@@ -55,7 +55,7 @@
           <div class='query-all'>
             <el-input v-model="searchObj.search" class='query' placeholder="可按公司名称/公司编号"></el-input>
             <el-button type="primary">查询</el-button>
-            <el-button type="primary" @click='addProject'>新增</el-button>
+            <el-button type="primary" @click='addProject(0)'>新增</el-button>
           </div>
         </div>
         <div class='opertion'>
@@ -66,9 +66,9 @@
       </div>
     </div>
     <div>
-      <ready-table v-if="searchObj.tag_search == 0" :tableData="tableData" @examine="examine" />
-      <pass-table v-if="searchObj.tag_search == 1" :tableData="tableData" @examine='examine' @stop='stop' />
-      <no-pass-table v-if="searchObj.tag_search == 2" :tableData="tableData" @examine="examine" @reCompany='reCompany' />
+      <ready-table v-if="searchObj.tag_search == 0" :tableData="tableData" @examine='examine' />
+      <pass-table v-if="searchObj.tag_search == 1" :tableData="tableData" @examine='examine'/>
+      <no-pass-table v-if="searchObj.tag_search == 2" :tableData="tableData" />
       <el-pagination v-if="tableData.length > 0" background class='page' layout="prev, pager, next" :page-size="pageSize" :current-page="searchObj.page" :total="total" @current-change="pageChange">
       </el-pagination>
     </div>
@@ -82,6 +82,7 @@ export default {
   data() {
     return {
       stopShow: false,
+      operationType: 0, // 0 新增  1审核  2查看   3修改 4转新房
       value: "",
       remark: "",
       searchObj: {
@@ -137,14 +138,64 @@ export default {
   },
   mounted() {},
   methods: {
+    examine(row, type) {
+      if (type == 1) {
+        this.$router.push({
+          name: "addProject",
+          params: {
+            operationType: type
+          }
+        });
+      };
+
+       if (type == 2) {
+        this.$router.push({
+          name: "addProject",
+          params: {
+            operationType: type
+          }
+        });
+      };
+
+
+       if (type == 3) {
+        this.$router.push({
+          name: "addProject",
+          params: {
+            operationType: type
+          }
+        });
+      };
+
+
+       if (type == 4) {
+        this.$router.push({
+          name: "addProject",
+          params: {
+            operationType: type
+          }
+        });
+      };
+
+
+
+
+    },
     async stop(row) {
       this.stopShow = true;
     },
     cancelStop() {
       this.stopShow = false;
     },
-    addProject() {
-      this.$router.push({ name: "addProject" });
+    addProject(type) {
+      if (type == 0) {
+        this.$router.push({
+          name: "addProject",
+          params: {
+            operationType: type
+          }
+        });
+      }
     },
     pageChange(page) {
       this.searchObj.page = page;

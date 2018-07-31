@@ -29,8 +29,8 @@
         </div>
         <div class='title'>
             <div class='text'>审核信息</div>
-            <el-button type="primary" class='title-btn-left-1'>审核通过</el-button>
-            <el-button type="primary" class='title-btn-left'>拒绝</el-button>
+            <el-button type="primary" class='title-btn-left-1' v-if='this.operationType==1'>审核通过</el-button>
+            <el-button type="primary" class='title-btn-left' v-if='this.operationType==1'>拒绝</el-button>
             <el-button type="primary" class='title-btn' @click='cancel'>关闭</el-button>
         </div>
         <div class='content'>
@@ -72,16 +72,28 @@
                     <el-input v-model="sumbitForm.project_hold_name" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="工商营业执照">
-                    <div style='color:#aaa'>（查看是否有企业公章）</div>
+                    <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
+                        <i class="el-icon-plus"></i>
+                    </el-upload>
+
+                    <!-- <div style='color:#aaa'>（查看是否有企业公章）</div>
                     <el-button class='add-btn'>点击跟换</el-button>
                     <div class='idcard-img'>
                         <span class='id-card-up'>
                             <img class='img' src='../../../assets/images/idCard.png' />
                         </span>
-                    </div>
+                    </div> -->
                 </el-form-item>
                 <el-form-item label="身份证照片">
-                    <span style='color:#aaa'>（证件照片为正反两面）</span>
+
+                    <el-upload class='idcard-img-1' action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
+                        <i class="el-icon-plus"></i>
+                    </el-upload>
+                    <el-upload class='idcard-img' action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
+                        <i class="el-icon-plus"></i>
+                    </el-upload>
+
+                    <!-- <span style='color:#aaa'>（证件照片为正反两面）</span>
                     <el-button class='add-btn'>点击更换</el-button>
                     <div class='idcard-img'>
                         <span class='id-card-up'>
@@ -90,7 +102,7 @@
                         <span class='id-card-dowm'>
                             <img class='img' src='../../../assets/images/Document_2@2x.png' />
                         </span>
-                    </div>
+                    </div> -->
                 </el-form-item>
                 <div class='input-title'>联系电话：</div>
                 <el-form-item class='input'>
@@ -168,6 +180,7 @@ import CitySelector from "../../../components/CitySelector";
 export default {
   data() {
     return {
+      operationType: 0, // 2查看  1审核
       sumbitForm: {},
       sh: {
         sh_name: "张三",
@@ -192,7 +205,9 @@ export default {
       ]
     };
   },
-  mounted() {},
+  mounted() {
+       this.operationType = this.$route.params.operationType; 
+  },
   methods: {
     cancel() {
       this.$router.go(-1);

@@ -99,6 +99,7 @@ import NoPassTable from "@/modules/Company/NoPassTable";
 export default {
   data() {
     return {
+      operationType: 0, // 2查看  1审核
       stopShow: false,
       value: "",
       remark: "",
@@ -188,8 +189,26 @@ export default {
     cancelStop() {
       this.stopShow = false;
     },
-    examine(row) {
-      this.$router.push({ name: "examine", query: { id: row.id } });
+    examine(row, type) {
+      console.log(row, type);
+      if (type == 1) {
+        this.$router.push({
+          name: "examine",
+          query: { id: row.id },
+          params: {
+            operationType: type
+          }
+        });
+      }
+      if (type == 2) {
+        this.$router.push({
+          name: "examine",
+          query: { id: row.id },
+          params: {
+            operationType: type
+          }
+        });
+      }
     },
     reCompany() {
       this.$router.push({ name: "addCompany" });

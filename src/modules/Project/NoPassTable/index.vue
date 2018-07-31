@@ -15,7 +15,7 @@
         <el-table-column prop="a" label="审核时间" align='center'></el-table-column>
         <el-table-column label="操作" align='center' width="130px">
             <template slot-scope="scope">
-                <el-button type="text" >查看</el-button>
+                <el-button type="text" >重新申请</el-button>
             </template>
         </el-table-column>
     </el-table>

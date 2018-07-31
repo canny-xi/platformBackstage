@@ -7,6 +7,8 @@ import Project from '@/page/Project'
 import NewHouse from '@/page/Project/NewHouse'
 import TwoHouse from '@/page/Project/TwoHouse'
 import AddProject from '@/page/Project/AddProject'
+import Choice from '@/page/Project/Choice'
+
 
 import Agent from '@/page/Agent'
 import AgentList from '@/page/Agent/AgentList'
@@ -81,6 +83,11 @@ export default new Router({
           path: 'addProject',
           name: 'addProject',
           component: AddProject,
+        },
+        {
+          path: 'choice',
+          name: 'choice',
+          component: Choice,
         },
 
 
